@@ -6,6 +6,7 @@
     "license": "MIT",
     "require": {
         "php": "^8.1",
+        "beyondcode/laravel-websockets": "^1.14",
         "guzzlehttp/guzzle": "^7.2",
         "haruncpi/laravel-id-generator": "^1.1",
         "laravel/framework": "^10.10",
@@ -15,6 +16,7 @@
         "mll-lab/laravel-graphiql": "^3.1",
         "nuwave/lighthouse": "^6.23",
         "owen-it/laravel-auditing": "^13.5",
+        "predis/predis": "^2.2",
         "pusher/pusher-php-server": "^7.2"
     },
     "require-dev": {

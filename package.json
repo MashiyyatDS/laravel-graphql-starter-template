@@ -4,6 +4,7 @@
     "type": "module",
     "scripts": {
         "serve": "php artisan serve",
+        "websocket": "php artisan websockets:serve",
         "build": "nuxt build",
         "dev": "nuxt dev",
         "generate": "nuxt generate",
@@ -13,12 +14,22 @@
         "laravel-build": "vite build"
     },
     "devDependencies": {
-        "axios": "^1.6.1",
-        "laravel-vite-plugin": "^0.8.0",
-        "vite": "^4.0.0",
         "@nuxt/devtools": "latest",
+        "axios": "^1.6.1",
+        "laravel-echo": "^1.15.3",
+        "laravel-vite-plugin": "^0.8.0",
         "nuxt": "^3.8.2",
+        "pusher-js": "8.4.0-rc1",
+        "vite": "^4.0.0",
         "vue": "^3.3.8",
         "vue-router": "^4.2.5"
+    },
+    "dependencies": {
+        "@apollo/client": "^3.8.8",
+        "@vue/apollo-composable": "4.0.0-beta.12",
+        "graphql": "^16.8.1",
+        "graphql-tag": "^2.12.6",
+        "openai": "^4.20.1",
+        "pusher": "^5.2.0"
     }
 }

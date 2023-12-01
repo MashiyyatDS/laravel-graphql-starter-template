@@ -1,0 +1,50 @@
+type Guest {
+    id: ID
+    uuid: String
+    first_name: String
+    middle_name: String
+    last_name: String
+    birthdate: String
+    gender: Int
+    email: String
+    created_at: String
+    updated_at: String
+}
+
+input GuestInput {
+    id: ID
+    uuid: String
+    first_name: String
+    middle_name: String
+    last_name: String
+    birthdate: String
+    gender: Int
+    email: String
+    password: String
+}
+
+input ConnectGuestRelation {
+    connect: ID
+    disconnect: ID
+    upsert: GuestInput
+    sync: ID
+    syncWithoutDetaching: ID
+}
+
+input ConnectGuestsRelation {
+    connect: [ID]
+    disconnect: [ID]
+    upsert: [GuestInput]
+    sync: [ID]
+    syncWithoutDetaching: [ID]
+}
+
+extend type Query {
+    guest(id: ID! @eq): Guest @find
+    guests: [Guest] @all
+    paginateGuest: [Guest] @paginate
+}
+
+extend type Mutation {
+    upsertGuest(input: GuestInput @spread): Guest @upsert
+}

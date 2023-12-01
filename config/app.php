@@ -165,11 +165,12 @@ return [
          */
         App\Providers\AppServiceProvider::class,
         App\Providers\AuthServiceProvider::class,
-        // App\Providers\BroadcastServiceProvider::class,
+        App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
-        \Nuwave\Lighthouse\WhereConditions\WhereConditionsServiceProvider::class,
         OwenIt\Auditing\AuditingServiceProvider::class,
+        \Nuwave\Lighthouse\WhereConditions\WhereConditionsServiceProvider::class,
+        \Nuwave\Lighthouse\Subscriptions\SubscriptionServiceProvider::class,
     ])->toArray(),
 
     /*

@@ -1,0 +1,30 @@
+type Blog {
+    id: ID
+    title: String
+    content: String
+    status: Int
+    created_at: String
+    updated_at: String
+}
+
+input BlogInput {
+    id: ID
+    title: String
+    content: String
+    status: Int
+}
+
+extend type Query {
+    blogs: [Blog] @all
+    paginateBlog: [Blog] @can(ability: "paginateBlog") @paginate
+}
+
+extend type Mutation {
+    upsertBlog(input: BlogInput @spread): Blog
+        @upsert
+        @broadcast(subscription: "blogUpserted")
+}
+
+extend type Subscription {
+    blogUpserted: Blog
+}
