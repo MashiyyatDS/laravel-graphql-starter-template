@@ -41,10 +41,16 @@ input ConnectGuestsRelation {
 
 extend type Query {
     guest(id: ID! @eq): Guest @find
-    guests: [Guest] @all
+    guests: [Guest] @can(ability: "all") @all
     paginateGuest: [Guest] @paginate
+}
+
+type AuthenticatedGuest {
+    guest: Guest
+    token: String
 }
 
 extend type Mutation {
     upsertGuest(input: GuestInput @spread): Guest @upsert
+    loginGuest(email: String!, password: String!): AuthenticatedGuest
 }

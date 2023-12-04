@@ -16,7 +16,7 @@ input BlogInput {
 
 extend type Query {
     blogs: [Blog] @all
-    paginateBlog: [Blog] @can(ability: "paginateBlog") @paginate
+    paginateBlog: [Blog] @can(ability: "paginate") @paginate
 }
 
 extend type Mutation {

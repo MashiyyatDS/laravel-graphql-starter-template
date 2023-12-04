@@ -4,12 +4,11 @@ declare(strict_types=1);
 
 namespace App\GraphQL\Mutations;
 
-
-use App\Models\User;
+use App\Models\Guest;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\ValidationException;
 
-final class LoginUser
+final class LoginGuest
 {
     /**
      * @param  null  $_
@@ -17,19 +16,19 @@ final class LoginUser
      */
     public function __invoke($_, array $args)
     {
-        $user = User::where('email', $args['email'])->first();
+        $guest = Guest::where('email', $args['email'])->first();
 
-        if (!$user || !Hash::check($args['password'], $user->password)) {
+        if (!$guest || !Hash::check($args['password'], $guest->password)) {
             throw ValidationException::withMessages([
                 'Invalid Credentials' => ['The provided credentials are incorrect.'],
             ]);
         }
 
-        $user->tokens()->delete();
+        $guest->tokens()->delete();
 
         return [
-            'user' => $user,
-            'token' => $user->createToken('user-token')->plainTextToken
+            'guest' => $guest,
+            'token' => $guest->createToken('guest-token', ['access:guest'])->plainTextToken
         ];
     }
 }
