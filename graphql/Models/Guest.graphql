@@ -41,7 +41,7 @@ input ConnectGuestsRelation {
 
 extend type Query {
     guest(id: ID! @eq): Guest @find
-    guests: [Guest] @can(ability: "all") @all
+    guests: [Guest] @can(ability: "guests") @all
     paginateGuest: [Guest] @paginate
 }
 
